@@ -12,5 +12,5 @@ This project studies different linear regression models, such as OLS, Ridge and 
 
 ## Files in Code folder
 
-functions.py : Includes functions such as OLS regression... (placeholder!)
+functions.py : Implementation of the following functions: ...
 exercise_2.ipynb: Includes code for producing the plots in exercise 2, week 39
