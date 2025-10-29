@@ -20,9 +20,9 @@ def test_sigmoid():
     # Derivatet skal være s*(1-s)
     s = sigmoid(z)
     expected_der = s * (1 - s)
-    actual_der = sigmoid_der(z)
+    actual_der = sigmoid_deriv(z)
     assert np.allclose(actual_der, expected_der, atol=1e-10, rtol=1e-10), "Sigmoid derivative mismatch"
-    print("✅ Sigmoid passed\n")
+    print("Sigmoid passed\n")
 
 def test_relu():
     print("Testing ReLU and its derivative...")
@@ -32,7 +32,7 @@ def test_relu():
 
     assert np.allclose(relu(z), expected_relu), "ReLU values mismatch"
     assert np.allclose(relu_deriv(z), expected_der), "ReLU derivative mismatch"
-    print("✅ ReLU passed\n")
+    print("ReLU passed\n")
 
 def test_softmax():
     print("Testing softmax normalization...")
@@ -41,11 +41,11 @@ def test_softmax():
     # Summen over klasser skal være 1 for hver batch
     sums = np.sum(s, axis=1)
     assert np.allclose(sums, np.ones_like(sums)), "Softmax rows do not sum to 1"
-    print("✅ Softmax passed\n")
+    print("Softmax passed\n")
 
 if __name__ == "__main__":
     print("Running activation function tests...\n")
     test_sigmoid()
     test_relu()
     test_softmax()
-    print("All tests passed successfully 🎉")
+    print("All tests passed successfully")
