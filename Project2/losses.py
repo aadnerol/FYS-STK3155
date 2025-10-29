@@ -11,11 +11,10 @@ def mse(y_hat: np.ndarray, y: np.ndarray) -> float:
 
 def mse_deriv(y_hat: np.ndarray, y: np.ndarray) -> np.ndarray:
     """
-    dL/d(y_hat) for MSE with mean  over batch.
-    Returns same shape as y_hat.
+    dL/d(y_hat) for MSE with mean over *all* elements (batch and features).
     """
-    B = y_hat.shape[0]
-    return (2.0 / B) * (y_hat - y)
+    denom = y_hat.size  # B * D (evt. flere dimensjoner)
+    return (2.0 / denom) * (y_hat - y)
 
 
 ### BCE – BINARY (two variants)###
@@ -101,7 +100,7 @@ def cross_entropy_with_logits(Z: np.ndarray, Y: np.ndarray) -> float:
 
 def cross_entropy_with_logits_deriv(Z: np.ndarray, Y: np.ndarray) -> np.ndarray:
     """
-    dL/dZ for multiclass CE mewithd logits.
+    dL/dZ for multiclass CE with logits.
     """
     B = Z.shape[0]
     Z_max = np.max(Z, axis=1, keepdims=True)
